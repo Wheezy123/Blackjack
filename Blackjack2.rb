@@ -1,6 +1,7 @@
 # First attempt at a procedural Ruby Blackjack game, enjoy!
+# updated for proper indentation
 
-puts "********************"
+puts "**********************"
 puts "Welcome to Blackjack!"
 puts "*********************"
 puts "What is your name?"
@@ -33,26 +34,26 @@ my_total = 0
 
 
 def card_count(hand)
-	single_card = hand.map{|h| h[0] }
+  single_card = hand.map{|h| h[0] }
 
-	card_total = 0
-	single_card.each do |sum|
-		if sum == "A"
-			card_total += 11
-		elsif sum.to_i == 0
-			card_total += 10
-		else
-			card_total += sum.to_i
-		end
-	end
+  card_total = 0
+  single_card.each do |sum|
+    if sum == "A"
+      card_total += 11
+    elsif sum.to_i == 0
+      card_total += 10
+    else
+      card_total += sum.to_i
+    end
+  end
 
-	#Find Aces
+  #Find Aces
 
-	single_card.select{|e| e =="A"}.count.times do
-		card_total -= 10 if card_total > 21
-	end
+  single_card.select{|e| e =="A"}.count.times do
+    card_total -= 10 if card_total > 21
+  end
 
-	card_total
+  card_total
 end
 
 
@@ -69,70 +70,117 @@ puts ""
 
 
 def ask
-	puts "What would you like to do? 1)Hit 2)Stay"
+  puts "What would you like to do? 1)Hit 2)Stay"
 end
 
 if my_total == 21
-	puts "You hit Blackjack! You Win!!"
+  puts "You hit Blackjack! You Win!!"
 else
-	#hit
-	my_total = my_total.to_i
-	while  my_total < 21
-		ask
-		hit_or_stay = gets.chomp
+  #hit
+  my_total = my_total.to_i
+  while  my_total < 21
+    ask
+    hit_or_stay = gets.chomp
 
-		if hit_or_stay == "1"
-			new_card = deck.pop
-			my_cards << new_card
-			my_total = card_count(my_cards)
-			puts "dealing..."
-			puts "You drew #{new_card} and now have #{my_cards} for a total of #{my_total}"
-		else 
-			hit_or_stay == "2"
-			puts "You have chosen to stay and have #{my_cards} for a total of #{my_total}"
-			break
-		end
-	end
+    if hit_or_stay == "1"
+      new_card = deck.pop
+      my_cards << new_card
+      my_total = card_count(my_cards)
+      puts "dealing..."
+      puts "You drew #{new_card} and now have #{my_cards} for a total of #{my_total}"
+    else 
+      hit_or_stay == "2"
+      puts "You have chosen to stay and have #{my_cards} for a total of #{my_total}"
+      break
+    end
+  end
 
-	if my_total > 21
-		puts "You Busted! Dealer Wins"
-	else
-		puts ""
-		puts "Dealer will now draw..."
-		new_dealer = deck.pop
-		dealer_cards << new_dealer
-		dealer_total = card_count(dealer_cards)
-		puts "Dealer is showing #{dealer_cards} for a total of #{dealer_total}"
+  if my_total > 21
+    puts "You Busted! Dealer Wins"
+  else
+    puts ""
+    puts "Dealer will now draw..."
+    new_dealer = deck.pop
+    dealer_cards << new_dealer
+    dealer_total = card_count(dealer_cards)
+    puts "Dealer is showing #{dealer_cards} for a total of #{dealer_total}"
 
 
-		while dealer_total < 21
-			puts "Dealer will now draw..."
-			new_dealer = deck.pop
-			dealer_cards << new_dealer
-			dealer_total = card_count(dealer_cards)
-			puts "Dealer has drawn #{new_dealer} and has a total of #{dealer_total}"
-			puts ""
-			if dealer_total <= 18 && dealer_total > my_total
-				puts "Dealer is showing #{dealer_cards} for a total of #{dealer_total}"
-				break
-			elsif dealer_total > my_total && dealer_total <= 21
-				puts "Dealer is showing #{dealer_cards} for a total of #{dealer_total}"
-				break
-			end
+    while dealer_total < 21
+      puts "Dealer will now draw..."
+      new_dealer = deck.pop
+      dealer_cards << new_dealer
+      dealer_total = card_count(dealer_cards)
+      puts "Dealer has drawn #{new_dealer} and has a total of #{dealer_total}"
+      puts ""
+      if dealer_total <= 18 && dealer_total > my_total
+        puts "Dealer is showing #{dealer_cards} for a total of #{dealer_total}"
+        break
+      elsif dealer_total > my_total && dealer_total <= 21
+        puts "Dealer is showing #{dealer_cards} for a total of #{dealer_total}"
+        break
+      end
 
-			if dealer_total > 21
-				puts "The Dealer has busted! You Win!!"
-			end
-		end
-	end
+      if dealer_total > 21
+        puts "The Dealer has busted! You Win!!"
+      end
+    end
+  end
 end
-
+      
 if my_total > dealer_total && my_total <= 21 || dealer_total > 21
-	puts "Congratulations, You Win!"
+  puts "Congratulations, You Win!"
 else 
-	puts "You Lose, better luck next time"
+  puts "You Lose, better luck next time"
 end
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
