@@ -1,7 +1,8 @@
-# I struggled for days to bring you this lovely Blackjack game, enjoy!
-# updated with proper indentation
+# First attempt at a procedural Ruby Blackjack game, enjoy!
 
+puts "********************"
 puts "Welcome to Blackjack!"
+puts "*********************"
 puts "What is your name?"
 name = gets.chomp
 
