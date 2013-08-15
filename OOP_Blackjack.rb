@@ -8,16 +8,19 @@
 #player(hit,stay,bet)
 #dealer(deal,hit,stay)
 
-class Card
+class Deck(cards)
+  
   def initialize(value,suit)
     @value = value
     @suit = suit
+    cards = []
   end
-end
-
-class Deck(cards)
 
   def shuffle
+  end
+  
+  def deal
+    cards.pop
   end
 
 end
