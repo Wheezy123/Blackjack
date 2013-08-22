@@ -36,7 +36,7 @@ module Hand
   end
 
   def busted?
-    total > 21
+    hand_total > 21
   end
 
 end
