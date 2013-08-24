@@ -108,6 +108,13 @@ class Dealer
   def to_s
     read_it
   end
+
+  def dealer_hand
+    puts "The Dealer is showing"
+    cards.each do |show|
+       "=>#{show}"
+    end
+  end
 end
 
 
@@ -206,8 +213,10 @@ class Blackjack
     def dealer_turn
       puts "Dealer's turn."
 
+      dealer.dealer_hand
+
       bj_or_bust?(dealer)
-      while dealer.total < 17
+      while dealer.total < 17 || dealer.total < player.total
         new_card = deck.deal_it
         puts "Dealing card to dealer: #{new_card}"
         dealer.dealt_card(new_card)
@@ -261,61 +270,6 @@ end
 
 game = Blackjack.new
 game.run
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
